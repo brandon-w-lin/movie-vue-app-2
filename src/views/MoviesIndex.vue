@@ -2,6 +2,7 @@
   <div class="home">
     <div v-for="movie in movies" v-bind:key="movie.id">
       {{ movie.title }}
+      <button @click="moreInfo(movie)">More Info</button>
     </div>
   </div>
 </template>
@@ -22,6 +23,9 @@ export default {
         console.log(response.data);
         this.movies = response.data;
       });
+    },
+    moreInfo: function (movie) {
+      this.$router.push("/movies/" + movie.id);
     },
   },
   created: function () {
