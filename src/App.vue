@@ -7,6 +7,10 @@
     <router-link to="/movies">All Movies</router-link>
     |
     <router-link to="/movies/submit">Submit</router-link>
+    |
+    <router-link to="/login">Login</router-link>
+    |
+    <router-link to="/logout">Logout</router-link>
   </nav>
   <router-view />
 </template>
