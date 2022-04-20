@@ -1,7 +1,26 @@
 <template>
   <div class="home">
     <div>
-      {{ movie }}
+      <p>
+        <b>Title:</b>
+        {{ movie.title }}
+      </p>
+      <p>
+        <b>Plot:</b>
+        {{ movie.plot }}
+      </p>
+      <p>
+        <b>Director:</b>
+        {{ movie.director }}
+      </p>
+      <p>
+        <b>Year:</b>
+        {{ movie.year }}
+      </p>
+    </div>
+    <div>
+      <button @click="moviesEdit()">Edit movie</button>
+      <button @click="moviesIndex()">Back to all movies</button>
     </div>
   </div>
 </template>
@@ -22,6 +41,12 @@ export default {
         console.log(response.data);
         this.movie = response.data;
       });
+    },
+    moviesEdit: function () {
+      this.$router.push("/movies/" + this.$route.params.id + "/edit");
+    },
+    moviesIndex: function () {
+      this.$router.push("/movies");
     },
   },
   created: function () {
