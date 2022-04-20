@@ -4,10 +4,21 @@
     <h2>Please fill out the form below. Hit submit when finished:</h2>
     <div>
       <form>
-        <input type="text" v-model="movieParams.title" placeholder="title" />
-        <input type="text" v-model="movieParams.plot" placeholder="plot" />
-        <input type="text" v-model="movieParams.year" placeholder="year" />
-        <input type="text" v-model="movieParams.director" placeholder="director" />
+        <p>
+          <input type="text" v-model="movieParams.title" placeholder="title" />
+        </p>
+        <p>
+          <textarea v-model="movieParams.plot" placeholder="plot"></textarea>
+        </p>
+        <small v-if="movieParams.plot.length > characterLimit - 50" style="color: red">
+          You have {{ characterLimit - movieParams.plot.length }} characters remaining
+        </small>
+        <p>
+          <input type="text" v-model="movieParams.year" placeholder="year" />
+        </p>
+        <p>
+          <input type="text" v-model="movieParams.director" placeholder="director" />
+        </p>
       </form>
     </div>
     <div>
@@ -23,7 +34,8 @@ import axios from "axios";
 export default {
   data: function () {
     return {
-      movieParams: {},
+      movieParams: { plot: "" },
+      characterLimit: 200,
     };
   },
   methods: {
